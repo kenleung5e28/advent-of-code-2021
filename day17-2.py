@@ -40,12 +40,12 @@ def valid(vx: int, vy: int) -> tuple[bool, int]:
     vy -= 1
   return False, max_y
 
-max_y = 0
+count = 0
 for vx in range(1, x2 + 1):
-  # why the upper bound for y velocity is abs(y1)?
-  for vy in range(1, abs(y1) + 1):
-    is_valid, y = valid(vx, vy)
+  # why the lower and upper bound for y velocity is +-abs(y1)?
+  for vy in range(-abs(y1), abs(y1) + 1):
+    is_valid, _ = valid(vx, vy)
     if is_valid:
-      max_y = max(max_y, y)
-print(max_y)
+      count += 1
+print(count)
 
